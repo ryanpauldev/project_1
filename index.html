@@ -13,46 +13,60 @@
 
 <body>
 
-
- <!--  JUMBOTRON HERE -->
-  <br>
-  <div class=container >
-    <div class="jumbotron jumbotron-fluid text-center bg-dark text-light">
+ <!--  JUMBOTRON HERE 🍺🍻-->
+  <div class=container>
+    <div class="jumbotron jumbotron-fluid text-center">
       <div class="container">
-        <h1 class="display-3">Beer ID</h1>
-        <h2 class="lead">Find all the Information on your Favorite Beer</h2>
+        <h1 class="display-4">Beer Project 1</h1>
+        <p class="lead">Find all the information on your favorite beer</p>
       </div>
     </div>
 
     <!-- SEARCH BAR -->
 
-    <form action="/action_page.php">
+    <form class="form-inline">
       <div class="form-group">
-        <label for="text"></label>
-        <input type="text" class="form-control" id="textSearch" placeholder="Type in your Favorite Brew here!">
+        <label for="beerInput">Search</label>
+        <input type="text" id="beerInput" class="form-control mx-sm-3" placeholder="Name of beer or brewery">
+        <small id="passwordHelpInline" class="text-muted">
+          <button type="button" class="btn btn-primary" id="searchBtn">Search</button>
+        </small>
       </div>
-
-      <button type="submit" class="btn btn-dark">Search</button>
     </form>
-    
 
     <!-- BEGINNING OF NAV BAR -->
-    <br>
-    <div class=container><nav>
+    <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-          aria-controls="nav-home" aria-selected="true">Discription</a>
         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-          aria-controls="nav-home" aria-selected="true">History</a>
+          aria-controls="nav-home" aria-selected="true">Home</a>
         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-          aria-controls="nav-profile" aria-selected="false">Nutrition</a>
-
+          aria-controls="nav-profile" aria-selected="false">Profile</a>
         <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
-          aria-controls="nav-contact" aria-selected="false">Reviews</a>
+          aria-controls="nav-contact" aria-selected="false">Contact</a>
 
-          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
-          aria-controls="nav-contact" aria-selected="false"></a>
-        
+        <a class="nav-item nav-link" id="nav-third-tab" data-toggle="tab" href="#nav-third" role="tab"
+          aria-controls="nav-third" aria-selected="false">tab3</a>
+
+        <a class="nav-item nav-link" id="nav-fourth-tab" data-toggle="tab" href="#nav-fourth" role="tab"
+          aria-controls="nav-fourth" aria-selected="false">tab4</a>
+
+        <a class="nav-item nav-link" id="nav-fifth-tab" data-toggle="tab" href="#nav-fifth" role="tab"
+          aria-controls="nav-fifth" aria-selected="false">tab5</a>
+
+          <!--  NAV BAR DROPDOWNS -->
+
+          <li class="nav-item dropdown">
+            
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </li>
+      </div>
 
       <!-- NAV TAB CONTENT HERE -->
     </nav>
