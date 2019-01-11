@@ -138,8 +138,7 @@ $(document).ready(function () {
       servingTag.addClass("nutritionInfo");
       servingTag.html("<h4>Serving size:</h4>" + servingSize);
       $("#nav-nutrition").append(servingTag);
-    
-    //to get complete nutrition info via nix_item_id
+  
     
     });
 
