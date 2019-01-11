@@ -17,7 +17,7 @@ $(document).ready(function () {
     //trying to connect to the API in the sandbox  
     //build the query
     // example endpoint beers:::> http://api.brewerydb.com/v2/{endpoint}/?key=abcdef
-    var queryURL = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search?key=c0a5fceb48f0e2d48f8850e64307b88f&q="+searchInput;
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search?key=c0a5fceb48f0e2d48f8850e64307b88f&q=" + searchInput;
 
     /* Important do not touch
     var queryURL = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search?key=c0a5fceb48f0e2d48f8850e64307b88f&q=guinness";
@@ -29,10 +29,12 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
       //console.log(response);
-      console.log(`length: ${response.data.length}`);
+
 
       //if the AJAX call returns something 
-      if (response.data.length > 0) {
+      if (response.data.length && response.data.length > 0) {
+
+        console.log(`length: ${response.data.length}`);
         //get the results as a giant resultsBeers Object
         resultBeers = response.data;
         console.log(resultBeers);
@@ -41,9 +43,9 @@ $(document).ready(function () {
         $("#number-results").text(resultBeers.length);
 
         //get the id of the returned beers to create a second query to get specific information about the selected beer
-        
-       /*  var beerId = resultBeers[2].id.trim();
-        console.log(`Beer Id:${beerId}`); */
+
+        /*  var beerId = resultBeers[2].id.trim();
+         console.log(`Beer Id:${beerId}`); */
 
         //for loop to create the table results content\
         for (var i = 0; i < resultBeers.length; i++) {
@@ -69,7 +71,7 @@ $(document).ready(function () {
 
           //create a new row using Jquery
           var newRow = $("<tr>");
-          
+
           var rowName = $("<td>").text(name).appendTo(newRow);
           var rowType = $("<td>").text(type).appendTo(newRow);
           var rowEstablished = $("<td>").text(established).appendTo(newRow);
@@ -99,24 +101,31 @@ $(document).ready(function () {
       }
     });
 
+    /* Calorie Search starts here */
 
-    var searchInput = $("#beerInput").val().trim();
-  console.log(searchInput);
-  var queryUrl = "https://trackapi.nutritionix.com/v2/search/item?" + searchInput;
-
-
-  /* $.ajax({
-    url: queryUrl,
-    method: "GET",
-    headers: {
-      "x-app-id": "87764d56",
-      "x-app-key": "64b0113675aca1dbf6f67d9df8299556"
-    }
-  }).then(function(response) {
-    console.log(response);
+    var calorieInput = $("#search-input").val().trim();
+    console.log(calorieInput);
+    var calorieQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + calorieInput;
 
 
-  }); */
+    $.ajax({
+      url: calorieQuery,
+      method: "GET",
+      headers: {
+        "x-app-id": "87764d56",
+        "x-app-key": "64b0113675aca1dbf6f67d9df8299556"
+      }
+    }).then(function (responseCalories) {
+      console.log("CALORIE INPUT HERE")
+      console.log(responseCalories);
+
+      //display beer calories for first result
+      var beerCalorie = responseCalories.branded[0].nf_calories;
+      var servingSize = responseCalories.branded[0].serving_qty + responseCalories.branded[0].serving_unit;
+      console.log("calories for " + calorieInput + ": " + beerCalorie);
+      console.log("serving size: " + servingSize);
+  
+    });
 
 
 
