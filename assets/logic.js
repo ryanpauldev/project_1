@@ -72,12 +72,24 @@ $(document).ready(function () {
           //!!!really crazy part stay with me :)
           //its gonna get really really nasty
           // Using the data method:
+          newRow.data("abv", resultBeers[i].abv);
           newRow.data("desc", resultBeers[i].description);
           newRow.data("isOrganic", resultBeers[i].isOrganic);
           newRow.data("isRetired", resultBeers[i].isRetired);
+          //from one result to another image links are store either under labels or images
+          var imgSrc;
+          if (resultBeers[i].labels) {
+            imgSrc = resultBeers[i].labels.medium;
+          } else {
+            if (resultBeers[i].images) {
+              imgSrc = resultBeers[i].images.medium;
+            }
+          }
+          //second query moved into inside the event listener for a click on the table import  
+          //still passing data to data method()
+          newRow.data("image", imgSrc);
           //inline statement to get fill the data
-          newRow.data("availability", ((resultBeers[i].available) ? resultBeers[i].available.name : "Not data available")
-          );
+          newRow.data("availability", ((resultBeers[i].available) ? resultBeers[i].available.name : "Not data available"));
 
           newRow.data("availability-desc", ((resultBeers[i].available) ? resultBeers[i].available.name.description : "Not data available"));
 
@@ -87,55 +99,15 @@ $(document).ready(function () {
           var rowCategory = $("<td>").text(category).appendTo(newRow);
           //append the newRow to the table list-results
           $("#list-beers").append(newRow);
-        }
 
-        //second query moved into inside the event listener for a click on the table import  
+
+        }
 
       } else { // in case there no data available for the search input
         //display the number of beers found in the card title
         $("#number-results").text("No data available");
       }
     });
-
-     /* Calorie Search starts here */
-
-     var calorieInput = $("#search-input").val().trim();
-     console.log(calorieInput);
-     var calorieQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + calorieInput;
- 
-     $.ajax({
-       url: calorieQuery,
-       method: "GET",
-       headers: {
-         "x-app-id": "87764d56",
-         "x-app-key": "64b0113675aca1dbf6f67d9df8299556"
-       }
-     }).then(function (responseCalories) {
-       console.log("CALORIE INPUT HERE")
-       console.log(responseCalories);
- 
-       //display beer calories for first result
-       var beerCalorie = responseCalories.branded[0].nf_calories;
-       var servingSize = responseCalories.branded[0].serving_qty + responseCalories.branded[0].serving_unit;
-       console.log("calories for " + calorieInput + ": " + beerCalorie);
-       console.log("serving size: " + servingSize);
-       
-     //empties nav nutrtion to prevent stacking information from previous searches
-     $(".nutritionInfo").empty();
- 
-     // adds nutrition and serving size on nutrition 
- 
-       var calorieTag = $("<div>");
-       calorieTag.addClass("nutritionInfo");
-       calorieTag.html("<h4>Calories:</h4>" + beerCalorie);
-       $("#nav-nutrition").append(calorieTag);
- 
-       var servingTag = $("<div>");
-       servingTag.addClass("nutritionInfo");
-       servingTag.html("<h4>Serving size:</h4>" + servingSize);
-       $("#nav-nutrition").append(servingTag);
-     });
-
   });
 
   //event listener for a click on a table tr on list-beers 
@@ -149,6 +121,7 @@ $(document).ready(function () {
 
     //remember the data method lol.
     //here is the time to call it back. Razen Sharingan!!! 
+    var abvValue = $(this).data("abv");
     var descValue = $(this).data("desc");
     var isOrganicValue = $(this).data("isOrganic");
     var isRetiredValue = $(this).data("isRetired");
@@ -164,20 +137,87 @@ $(document).ready(function () {
     var divDescription = $("<div>");
 
     var pDescription = $('<p class="lead">').text(descValue);
+    var hAbv = $("<h4>").text("Alcohol Content: " + abvValue);
     var hisOrganic = $("<h4>").text("Is organic: " + isOrganicValue);
     var hisRetired = $("<h4>").text("Is retired: " + isRetiredValue);
     var havailabilityValue = $("<h4>").text("Availability: " + availabilityValue);
     var havailabilityDescValue = $("<h4>").text("Availability : " + availabilityDescValue);
 
     //append everything to the div
-    divDescription.append(pDescription, hisOrganic, hisRetired, havailabilityValue, havailabilityDescValue)
+    divDescription.append(pDescription, hAbv, hisOrganic, hisRetired, havailabilityValue, havailabilityDescValue)
 
     //append the div to the nav description
     $("#nav-description").append(divDescription);
 
+    /* IMAGE */
+    //NAV 2 - display image of the beer
+    //clear the current content
+    $("#nav-image").empty();
+    //lets build the img tag
+    //get the value back from data
+    var imageSrc = $(this).data("image");
+    //create the img tag
+    var imgTag = $("<img>");
+
+    imgTag.addClass("") // class img thumbnail
+      .attr("src", imageSrc) // img src
+      .attr("alt", imageSrc); // alt
+    $("#nav-image").append(imgTag);
+
+
+    /* CALORIES */
+    //NAV 3 - display calories
+
+    //empties nav nutrtion to prevent stacking information from previous searches
+    $("#nav-nutrition").empty();
+    /* Calorie Search starts here */
+    //search is based on searchInput
+    // get the content of the input
+    var searchInput = $("#search-input").val().trim();
+    console.log(searchInput);
+
+    var calorieQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + searchInput;
+    $.ajax({
+      url: calorieQuery,
+      method: "GET",
+      headers: {
+        "x-app-id": "87764d56",
+        "x-app-key": "64b0113675aca1dbf6f67d9df8299556"
+      }
+    }).then(function (responseCalories) {
+      console.log(responseCalories);
+      //display beer calories for first result
+      var beerCalorie = responseCalories.branded[0].nf_calories;
+      var servingSize = responseCalories.branded[0].serving_qty + responseCalories.branded[0].serving_unit;
+
+      //passing the values of calories to data
+      //newRow.data("calorie", beerCalorie);
+      //newRow.data("serving", servingSize);
+
+      //create the div Tags
+      var calorieTag = $("<div>");
+      var servingTag = $("<div>");
+
+      //building the html tag
+      calorieTag.html("<h4>Calories:</h4>" + beerCalorie);
+      servingTag.html("<h4>Serving size:</h4>" + servingSize);
+
+      //append the divs to the nav 
+      $("#nav-nutrition").append(calorieTag, servingTag);
+
+
+    });
+
+    // get the nutrition and serving size back from data
+    //var calorieValue = $(this).data("calorie");
+    //var servingValue = $(this).data("serving");
+
+
+
 
     /*INGREDIENTS  */
     //NAV 4  - display the values of the ingredients
+    $("#nav-ingredients").empty();
     //parameters :::> beer/WHQisc/ingredients
     testId = "WHQisc"; //change later by rowId
     var queryBeer = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/beer/" + testId + "/ingredients?key=c0a5fceb48f0e2d48f8850e64307b88f";
@@ -197,15 +237,13 @@ $(document).ready(function () {
           var ingredientTag = $("<h5>").text(`Ingredient - ${j} - ${beerIngredients.data[j].name}`).appendTo(ingredientDiv);
         }
         //dipslay the ingredient content inside the nav-ingredients
-        $("#nav-ingredients").append(ingredientDiv)
+        $("#nav-ingredients").append(ingredientDiv);
       } else {
 
         $("#nav-ingredients").text("No data available!");
       }
-      //console.log(`length: ${response.data.length}`);
+      //console.log(`length: ${response.data.length}`);      
     });
 
   });
-
-
 });
