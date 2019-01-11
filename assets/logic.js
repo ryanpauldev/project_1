@@ -107,7 +107,6 @@ $(document).ready(function () {
     console.log(calorieInput);
     var calorieQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + calorieInput;
 
-
     $.ajax({
       url: calorieQuery,
       method: "GET",
@@ -124,7 +123,24 @@ $(document).ready(function () {
       var servingSize = responseCalories.branded[0].serving_qty + responseCalories.branded[0].serving_unit;
       console.log("calories for " + calorieInput + ": " + beerCalorie);
       console.log("serving size: " + servingSize);
-  
+      
+    //empties nav nutrtion to prevent stacking information from previous searches
+    $(".nutritionInfo").empty();
+
+    // adds nutrition and serving size on nutrition 
+
+      var calorieTag = $("<div>");
+      calorieTag.addClass("nutritionInfo");
+      calorieTag.html("<h4>Calories:</h4>" + beerCalorie);
+      $("#nav-nutrition").append(calorieTag);
+
+      var servingTag = $("<div>");
+      servingTag.addClass("nutritionInfo");
+      servingTag.html("<h4>Serving size:</h4>" + servingSize);
+      $("#nav-nutrition").append(servingTag);
+    
+    //to get complete nutrition info via nix_item_id
+    
     });
 
 
