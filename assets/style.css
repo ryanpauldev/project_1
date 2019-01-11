@@ -3,3 +3,19 @@ body {
     
 }
 
+.jumbotron h1, .jumbotron h4 {
+    font-weight: bolder;
+}
+
+#search-button {
+    font-weight: bold;
+}
+
+.nav {
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
