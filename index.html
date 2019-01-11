@@ -14,13 +14,20 @@
 <body>
   <!--  JUMBOTRON HERE 🍺🍻-->
   <br>
+    
   <div class=container>
-    <div class="jumbotron jumbotron-fluid text-center bg-dark text-light">
+    <div id="jumbotron" class="collapse show">
+    <div class="jumbotron jumbotron-fluid text-center bg-info text-dark">
       <div class="container">
-        <h1 class="display-3">Beer ID</h1>
-        <p class="lead">Find all the information on your Favorite Beer</p>
+        
+          <h1 class="display-2">Beer ID</h1>
+        <h4 class="lead">Find all the information on your Favorite Beer
+        </h4>
+        
+        <p>🍺🍻🍺🍻🍺🍻🍺🍻🍺🍻🍺🍻🍺🍻🍺🍻🍺🍻🍺🍻🍺🍻</p>
       </div>
     </div>
+  </div>
 
     <!-- SEARCH BAR -->
 
@@ -31,7 +38,7 @@
             <input type="text" class="form-control" id="search-input" placeholder="Type in your Favorite Brew here!">
           </div>
           <div class="form-group col-md-4">
-            <button type="submit" class="btn btn-dark" id="search-button">Search</button>
+            <button type="submit" class="btn btn-info text-dark" id="search-button" data-toggle="collapse" data-target="#jumbotron">Search</button>
           </div>
         </div>
         </div>
