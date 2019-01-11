@@ -7,7 +7,8 @@ $(document).ready(function () {
   $("#search-button").on("click", function (event) {
     //prevent reloads
     event.preventDefault();
-
+    //hiding the jumbotron to full display the table list-beers
+    $(".jumbotron").hide();
     //clear the current content of the table
     $("#list-beers").empty();
 
@@ -82,46 +83,15 @@ $(document).ready(function () {
           var rowType = $("<td>").text(type).appendTo(newRow);
           var rowEstablished = $("<td>").text(established).appendTo(newRow);
           var rowCategory = $("<td>").text(category).appendTo(newRow);
-
-
-
           //append the newRow to the table list-results
           $("#list-beers").append(newRow);
         }
 
-        //second query
-        //parameters :::> beer/WHQisc/ingredients
-        testId = "WHQisc";
-        var queryBeer = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/beer/" + testId + "/ingredients?key=c0a5fceb48f0e2d48f8850e64307b88f";
-        //creates the AJAX call for the specific
-        $.ajax({
-          url: queryBeer,
-          method: "GET"
-        }).then(function (beerIngredients) {
-          console.log(beerIngredients);
-          if (beerIngredients.data) {
-            var listIngredients = beerIngredients.data.length;
-            var ingredientDiv = $("<div>");
-
-            for (var j = 0; j < listIngredients; j++) {
-              console.log(`Ingredient - ${j} - ${beerIngredients.data[j].name}`);
-              //create an h4 tag and append it to ingredientDiv
-              var ingredientTag = $("<h4>").text(`Ingredient - ${j} - ${beerIngredients.data[j].name}`).appendTo(ingredientDiv);
-            }
-            //dipslay the ingredient content inside the nav-ingredients
-            $("#nav-ingredients").append(ingredientDiv)
-          } else {
-
-            $("#nav-ingredients").text("No data available!");
-          }
-          //console.log(`length: ${response.data.length}`);
-
-        });
+        //second query moved into inside the event listener for a click on the table import  
 
       } else { // in case there no data available for the search input
         //display the number of beers found in the card title
         $("#number-results").text("No data available");
-
       }
     });
 
@@ -146,7 +116,7 @@ $(document).ready(function () {
 
   });
 
-  //event listener for a click on a table tr on list import 
+  //event listener for a click on a table tr on list-beers 
   $(document).on("click", "#list-beers tr", function () {
     //change the color of the row
     $(this).addClass("table-success");
@@ -163,7 +133,8 @@ $(document).ready(function () {
     var availabilityValue = $(this).data("availability");
     var availabilityDescValue = $(this).data("availability-desc");
 
-    //display the values inside the nav description
+    /* DESCRIPTION */
+    //NAV 1 - display the values inside the nav description
     //but first clean the current content tada...
     $("#nav-description").text("");
 
@@ -181,6 +152,36 @@ $(document).ready(function () {
 
     //append the div to the nav description
     $("#nav-description").append(divDescription);
+
+
+    /*INGREDIENTS  */
+    //NAV 4  - display the values of the ingredients
+    //parameters :::> beer/WHQisc/ingredients
+    testId = "WHQisc"; //change later by rowId
+    var queryBeer = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/beer/" + testId + "/ingredients?key=c0a5fceb48f0e2d48f8850e64307b88f";
+    //creates the AJAX call for the specific beerId aka rowId
+    $.ajax({
+      url: queryBeer,
+      method: "GET"
+    }).then(function (beerIngredients) {
+      console.log(beerIngredients);
+      if (beerIngredients.data) {
+        var listIngredients = beerIngredients.data.length;
+        var ingredientDiv = $("<div>");
+        //for loop to create the ingredients tag
+        for (var j = 0; j < listIngredients; j++) {
+          console.log(`Ingredient - ${j} - ${beerIngredients.data[j].name}`);
+          //create an h4 tag and append it to ingredientDiv
+          var ingredientTag = $("<h5>").text(`Ingredient - ${j} - ${beerIngredients.data[j].name}`).appendTo(ingredientDiv);
+        }
+        //dipslay the ingredient content inside the nav-ingredients
+        $("#nav-ingredients").append(ingredientDiv)
+      } else {
+
+        $("#nav-ingredients").text("No data available!");
+      }
+      //console.log(`length: ${response.data.length}`);
+    });
 
 
 
