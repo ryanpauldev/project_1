@@ -1,21 +1,19 @@
 body {
     background-color:whitesmoke;
-    
-}
-
-.jumbotron h1, .jumbotron h4 {
-    font-weight: bolder;
-}
-
+    }
+.jumbotron h4 {
+    font-family: 'Sarabun', sans-serif;
+   }
 #search-button {
     font-weight: bold;
 }
-
 .nav {
     font-weight: bold;
     text-align: center;
 }
-
+.jumbotron h1 {
+    font-family: 'Ewert', cursive;
+    font-size: 100px;}
 
 
 
