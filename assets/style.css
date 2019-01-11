@@ -1,5 +1,5 @@
 body {
-    background-color:lightblue;
+    background-color:whitesmoke;
     
 }
 
@@ -10,4 +10,12 @@ body {
 #search-button {
     font-weight: bold;
 }
+
+.nav {
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
 

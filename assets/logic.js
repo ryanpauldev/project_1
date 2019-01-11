@@ -7,6 +7,8 @@ $(document).ready(function () {
     //prevent reloads
     event.preventDefault();
 
+
+
     //clear the current content of the table
     $("#list-beers").empty();
 
@@ -101,3 +103,8 @@ $(document).ready(function () {
 
   });
 });
+// On click, this will hide the Jumbotron forever//
+$(document).ready(function(){
+  $("#search-button").click(function(){
+    $(".jumbotron").hide();
+  })})
