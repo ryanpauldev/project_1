@@ -115,7 +115,6 @@ $(document).ready(function () {
     });
 
   });
-<<<<<<< HEAD
 
   //event listener for a click on a table tr on list-beers 
   $(document).on("click", "#list-beers tr", function () {
@@ -184,15 +183,5 @@ $(document).ready(function () {
       //console.log(`length: ${response.data.length}`);
     });
 
-
-
   });
 });
-=======
-});
-// On click, this will hide the Jumbotron forever//
-$(document).ready(function(){
-  $("#search-button").click(function(){
-    $(".jumbotron").hide();
-  })})
->>>>>>> 7ee2bd1b4225647f8292c52e690915a0a75e4ca5
