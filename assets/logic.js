@@ -70,12 +70,23 @@ $(document).ready(function () {
           //!!!really crazy part stay with me :)
           //its gonna get really really nasty
           // Using the data method:
+          newRow.data("abv", resultBeers[i].abv);
           newRow.data("desc", resultBeers[i].description);
           newRow.data("isOrganic", resultBeers[i].isOrganic);
           newRow.data("isRetired", resultBeers[i].isRetired);
+          //from one result to another image links are store either under labels or images
+          var imgSrc;
+          if (resultBeers[i].labels) {
+            imgSrc = resultBeers[i].labels.medium;
+          }
+          else {
+            if (resultBeers[i].images) {
+              imgSrc = resultBeers[i].images.medium;
+            }
+          }
+          newRow.data("image", imgSrc);
           //inline statement to get fill the data
-          newRow.data("availability", ((resultBeers[i].available) ? resultBeers[i].available.name : "Not data available")
-          );
+          newRow.data("availability", ((resultBeers[i].available) ? resultBeers[i].available.name : "Not data available"));
 
           newRow.data("availability-desc", ((resultBeers[i].available) ? resultBeers[i].available.name.description : "Not data available"));
 
@@ -127,6 +138,7 @@ $(document).ready(function () {
 
     //remember the data method lol.
     //here is the time to call it back. Razen Sharingan!!! 
+    var abvValue = $(this).data("abv");
     var descValue = $(this).data("desc");
     var isOrganicValue = $(this).data("isOrganic");
     var isRetiredValue = $(this).data("isRetired");
@@ -142,19 +154,35 @@ $(document).ready(function () {
     var divDescription = $("<div>");
 
     var pDescription = $('<p class="lead">').text(descValue);
+    var hAbv = $("<h4>").text("Alcohol Content: " + abvValue);
     var hisOrganic = $("<h4>").text("Is organic: " + isOrganicValue);
     var hisRetired = $("<h4>").text("Is retired: " + isRetiredValue);
     var havailabilityValue = $("<h4>").text("Availability: " + availabilityValue);
     var havailabilityDescValue = $("<h4>").text("Availability : " + availabilityDescValue);
 
     //append everything to the div
-    divDescription.append(pDescription, hisOrganic, hisRetired, havailabilityValue, havailabilityDescValue)
+    divDescription.append(pDescription, hAbv, hisOrganic, hisRetired, havailabilityValue, havailabilityDescValue)
 
     //append the div to the nav description
     $("#nav-description").append(divDescription);
 
+    /* HISTORY */
+    //NAV 2 - display image of the beer
+    //clear the current content
+    $("#nav-history").empty();
+    //lets build the img tag
+    //get the value back from data
+    var imageSrc = $(this).data("image");
+    //create the img tag
+    var imgTag = $("<img>");
 
-    /*INGREDIENTS  */
+    imgTag.addClass("") // class img thumbnail
+          .attr("src", imageSrc) // img src
+          .attr("alt", imageSrc);  // alt
+    $("#nav-history").append(imgTag);
+
+
+   /*INGREDIENTS  */
     //NAV 4  - display the values of the ingredients
     //parameters :::> beer/WHQisc/ingredients
     testId = "WHQisc"; //change later by rowId
@@ -175,7 +203,7 @@ $(document).ready(function () {
           var ingredientTag = $("<h5>").text(`Ingredient - ${j} - ${beerIngredients.data[j].name}`).appendTo(ingredientDiv);
         }
         //dipslay the ingredient content inside the nav-ingredients
-        $("#nav-ingredients").append(ingredientDiv)
+        $("#nav-ingredients").append(ingredientDiv);
       } else {
 
         $("#nav-ingredients").text("No data available!");
