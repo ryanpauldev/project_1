@@ -31,10 +31,12 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
       //console.log(response);
-      console.log(`length: ${response.data.length}`);
+
 
       //if the AJAX call returns something 
-      if (response.data.length > 0) {
+      if (response.data.length && response.data.length > 0) {
+
+        console.log(`length: ${response.data.length}`);
         //get the results as a giant resultsBeers Object
         resultBeers = response.data;
         console.log(resultBeers);
@@ -106,24 +108,44 @@ $(document).ready(function () {
       }
     });
 
-    /* Calorie Searc starts here */
+     /* Calorie Search starts here */
 
-    var calorieInput = $("#search-input").val().trim();
-    console.log(`Calorie Input:${calorieInput}`);
-    var calorieQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + calorieInput;
-
-    $.ajax({
-      url: calorieQuery,
-      method: "GET",
-      headers: {
-        "x-app-id": "87764d56",
-        "x-app-key": "64b0113675aca1dbf6f67d9df8299556"
-      }
-    }).then(function (responseCalories) {
-      console.log(`Calorie Object:`, responseCalories);
-
-
-    });
+     var calorieInput = $("#search-input").val().trim();
+     console.log(calorieInput);
+     var calorieQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + calorieInput;
+ 
+     $.ajax({
+       url: calorieQuery,
+       method: "GET",
+       headers: {
+         "x-app-id": "87764d56",
+         "x-app-key": "64b0113675aca1dbf6f67d9df8299556"
+       }
+     }).then(function (responseCalories) {
+       console.log("CALORIE INPUT HERE")
+       console.log(responseCalories);
+ 
+       //display beer calories for first result
+       var beerCalorie = responseCalories.branded[0].nf_calories;
+       var servingSize = responseCalories.branded[0].serving_qty + responseCalories.branded[0].serving_unit;
+       console.log("calories for " + calorieInput + ": " + beerCalorie);
+       console.log("serving size: " + servingSize);
+       
+     //empties nav nutrtion to prevent stacking information from previous searches
+     $(".nutritionInfo").empty();
+ 
+     // adds nutrition and serving size on nutrition 
+ 
+       var calorieTag = $("<div>");
+       calorieTag.addClass("nutritionInfo");
+       calorieTag.html("<h4>Calories:</h4>" + beerCalorie);
+       $("#nav-nutrition").append(calorieTag);
+ 
+       var servingTag = $("<div>");
+       servingTag.addClass("nutritionInfo");
+       servingTag.html("<h4>Serving size:</h4>" + servingSize);
+       $("#nav-nutrition").append(servingTag);
+     });
 
   });
 
