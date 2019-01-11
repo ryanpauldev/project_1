@@ -96,17 +96,8 @@ $(document).ready(function () {
         //display the number of beers found in the card title
         $("#number-results").text("No data available");
 
-<<<<<<< HEAD
-  //Search button sumbit function
-  $("#searchBTN").on("click", function (event) {
-    event.preventDefault();
-    console.log("YOU CLICKED ME")
-    var searchInput = $("#beerInput").val().trim();
-    console.log(searchInput);
-=======
       }
     });
->>>>>>> 033aed2d586b6c63d5d591d6b3c626438308e9eb
 
 
     var searchInput = $("#beerInput").val().trim();
@@ -114,7 +105,7 @@ $(document).ready(function () {
   var queryUrl = "https://trackapi.nutritionix.com/v2/search/item?" + searchInput;
 
 
-  $.ajax({
+  /* $.ajax({
     url: queryUrl,
     method: "GET",
     headers: {
@@ -125,7 +116,7 @@ $(document).ready(function () {
     console.log(response);
 
 
-  });
+  }); */
 
 
 
