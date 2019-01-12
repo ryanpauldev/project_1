@@ -1,7 +1,6 @@
 $(document).ready(function () {
   //global variables
-  var resultBeers;
-  var testId;
+  var resultBeers;  
 
   //event listener to fire up the search and acces the API
   $("#search-button").on("click", function (event) {
@@ -69,9 +68,11 @@ $(document).ready(function () {
           //create a new row using jQuery and 
           var newRow = $("<tr>");
           newRow.attr("data-id", id);
+          newRow.attr("data-name", name);
           //!!!really crazy part stay with me :)
           //its gonna get really really nasty
-          // Using the data method:
+
+          // Using the data method:          
           newRow.data("abv", resultBeers[i].abv);
           newRow.data("desc", resultBeers[i].description);
           newRow.data("isOrganic", resultBeers[i].isOrganic);
@@ -117,7 +118,8 @@ $(document).ready(function () {
 
     //get the value of the tr id
     var rowId = $(this).attr("data-id");
-    alert(`this row id is: ${rowId}`);
+    var rowName = $(this).attr("data-name")
+    alert(`this beer is: ${rowName}`);
 
     //remember the data method lol.
     //here is the time to call it back. Razen Sharingan!!! 
@@ -171,12 +173,12 @@ $(document).ready(function () {
     //empties nav nutrtion to prevent stacking information from previous searches
     $("#nav-nutrition").empty();
     /* Calorie Search starts here */
-    //search is based on searchInput
-    // get the content of the input
-    var searchInput = $("#search-input").val().trim();
-    console.log(searchInput);
+    //search is based on the beer name so we will use rowName
 
-    var calorieQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + searchInput;
+    //var searchInput = $("#search-input").val().trim();
+    console.log(rowName);
+
+    var calorieQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + rowName;
     $.ajax({
       url: calorieQuery,
       method: "GET",
@@ -204,22 +206,19 @@ $(document).ready(function () {
 
       //append the divs to the nav 
       $("#nav-nutrition").append(calorieTag, servingTag);
-
-
     });
 
     // get the nutrition and serving size back from data
     //var calorieValue = $(this).data("calorie");
     //var servingValue = $(this).data("serving");
 
-
-
-
     /*INGREDIENTS  */
     //NAV 4  - display the values of the ingredients
     $("#nav-ingredients").empty();
     //parameters :::> beer/WHQisc/ingredients
-    testId = "WHQisc"; //change later by rowId
+    // testId = "WHQisc"; 
+    //change later by rowId 
+    var testId = rowId;
     var queryBeer = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/beer/" + testId + "/ingredients?key=c0a5fceb48f0e2d48f8850e64307b88f";
     //creates the AJAX call for the specific beerId aka rowId
     $.ajax({
