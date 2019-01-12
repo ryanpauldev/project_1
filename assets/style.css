@@ -5,6 +5,7 @@ body {
 
 .jumbotron{
     position: relative;
+    background: url("../assets/images/beer442Edited.jpg");
 }
 
 .jumbotron h4 {
@@ -23,9 +24,25 @@ body {
 .jumbotron h1 {
     font-family: 'Ewert', cursive;
     font-size: 100px;
+    color: black;
+}
+
+.card-header {
+    background: url("../assets/images/beerCardHeader.png");
+}
+
+.nav-item {
+    background: url("../assets/images/beerNavTab.png");
 }
 
 
+a[aria-selected="false"] {
+    background: url("../assets/images/navTabInactive.png");
+}
+
+a:link {
+    color: black;
+}
 /* SLIDESHOW BACKGROUND NO TOUCHY */
 .crossfade > figure {
     animation: imageAnimation 75s linear infinite 0s;
