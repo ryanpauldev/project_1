@@ -76,6 +76,7 @@ $(document).ready(function () {
           newRow.data("desc", resultBeers[i].description);
           newRow.data("isOrganic", resultBeers[i].isOrganic);
           newRow.data("isRetired", resultBeers[i].isRetired);
+          newRow.data("name", resultBeers[i].name); // TEST PLEASE IGNORE
           //from one result to another image links are store either under labels or images
           var imgSrc;
           if (resultBeers[i].labels) {
@@ -127,7 +128,8 @@ $(document).ready(function () {
     var isRetiredValue = $(this).data("isRetired");
     var availabilityValue = $(this).data("availability");
     var availabilityDescValue = $(this).data("availability-desc");
-
+    var testName = $(this).data("name"); //TEST PLEASE IGNORE
+    console.log("TEST PLEASE IGNORE:" + testName);
     /* DESCRIPTION */
     //NAV 1 - display the values inside the nav description
     //but first clean the current content tada...
@@ -176,7 +178,7 @@ $(document).ready(function () {
     var searchInput = $("#search-input").val().trim();
     console.log(searchInput);
 
-    var calorieQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + searchInput;
+    var calorieQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + testName; //orginally searchInput
     $.ajax({
       url: calorieQuery,
       method: "GET",
