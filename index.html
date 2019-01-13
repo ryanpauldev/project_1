@@ -7,27 +7,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-  <link href="https://fonts.googleapis.com/css?family=Ewert" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css">
-  <title>Beer</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+  
+
+  <title>Login Page</title>
 </head>
 
 <body>
+  <!-- sign form using firebase UI -->
 
-<!-- tags for slideshow background -->
-  <div class="crossfade">
-    <figure></figure>
-    <figure></figure>
-    <figure></figure>
-    <figure></figure>
-    <figure></figure>
-  </div>
-  
-  <!--  JUMBOTRON HERE 🍺🍻-->
-  <br>
-
-  <div class=container>
-
+  <div class="container">
     <div class="jumbotron jumbotron-fluid text-center text-dark">
       <div class="container">
 
@@ -35,106 +28,29 @@
         <h4 class="lead">🍺🍺🍺 Find all the information on your Favorite Beer 🍺🍺🍺
         </h4>
 
-
       </div>
-    </div>
+    </div>  
 
-
-    <!-- SEARCH BAR -->
-
-    <form role="form">
-      <div class="form-group">
-        <div class="form-row">
-          <div class="form-group col-md-11">
-            <input type="text" class="form-control" id="search-input" placeholder="Type in your Favorite Beer or Brewery here!">
-          </div>
-          <div class="form-group col-md-1">
-            <button type="submit" class="btn btn-warning text-dark" id="search-button">Search</button>
-          </div>
+    <div class="card">
+        <div class="card-header lead">
+          Sign In Options
+        </div>
+        <div class="card-body lead">
+          <!-- content will be a div with the logo of each sign in providers -->
+          <div id="firebaseui-auth-container"></div>
+          
         </div>
       </div>
-    </form>
 
-    <!-- Results display -->
-    <!-- Beginning table -->
-    <div class="card mb-4 border-warning">
-      <h5 class="card-header">Results</h5>
-      <div class="card-body bg-warning">
-        <h5 class="card-title"><span id="number-results"></span></h5>
-        <!-- begin of the table -->
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <!-- We only display the name of the beer and maybe the origin and alias -->
-              <th scope="col">Beer Name</th>
-              <th scope="col">Type</th> <!-- later we will have caterogy as well as type -->
-              <th scope="col">Date Established</th>
-              <th scope="col">Category</th>
-            </tr>
-          </thead>
-          <tbody id="list-beers">
-            <!-- Content generated dynamically -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!-- End Table -->
 
-    <!-- BEGINNING OF NAV BAR -->
-    <br>
-   <!--  <div class=container> -->
-      <div class="card mb-4 border-warning">
-        <h5 class="card-header">Info</h5>
-        <div class="card-body bg-warning">
-          <nav>
-            <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+  </div>
 
-              <a class="nav-item nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description"
-                role="tab" aria-controls="nav-home" aria-selected="true">Description</a>
+  <script src="assets/javascript/signin.js"></script>
 
-              <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#nav-image" role="tab"
-                aria-controls="nav-home" aria-selected="true">Image</a>
-
-              <a class="nav-item nav-link" id="nav-nutrition-tab" data-toggle="tab" href="#nav-nutrition" role="tab"
-                aria-controls="nav-profile" aria-selected="false">Nutrition</a>
-
-              <a class="nav-item nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab"
-                aria-controls="nav-contact" aria-selected="false">Reviews</a>
-
-              <a class="nav-item nav-link" id="nav-ingredients-tab" data-toggle="tab" href="#nav-ingredients" role="tab"
-                aria-controls="nav-contact" aria-selected="false">Ingredients</a>
-
-              <a class="nav-item nav-link" id="nav-location-tab" data-toggle="tab" href="#nav-location" role="tab"
-                aria-controls="nav-contact" aria-selected="false">Location</a>
-
-              <!-- NAV TAB CONTENT HERE -->
-          </nav>
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-home-tab"><br>This
-              is placeholder text for the Description tab</div>
-            <div class="tab-pane fade" id="nav-image" role="tabpanel" aria-labelledby="nav-profile-tab"><br>This is
-              placeholder text for the History tab</div>
-            <div class="tab-pane fade" id="nav-nutrition" role="tabpanel" aria-labelledby="nav-contact-tab"><br>This is
-              placeholder text for the Nutrition tab</div>
-            <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-third-tab"><br>This is
-              placeholder
-              text for the Reviews tab</div>
-            <div class="tab-pane fade" id="nav-ingredients" role="tabpanel" aria-labelledby="nav-fourth-tab"><br>This
-              is
-              placeholder text for the Ingredients tab</div>
-            <div class="tab-pane fade" id="nav-location" role="tabpanel" aria-labelledby="nav-fifth-tab"><br>This is
-              placeholder text for the Location tab</div>
-          </div>
-
-          <br><br><br><br><br><br>
-        </div>
-      </div> <!-- end div tag for card that contains navs -->
-    <!-- </div> -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="assets/logic.js"></script>
-</body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="assets/javascript/auth.js"></script>
+ 
 
 </html>

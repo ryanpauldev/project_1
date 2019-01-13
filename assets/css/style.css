@@ -1,11 +1,12 @@
 body {
-     background: url("../assets/images/cold-liquid-light-black-and-white-white-night-618853-pxhere.com.jpg");
+     background: url("/assets/images/cold-liquid-light-black-and-white-white-night-618853-pxhere.com.jpg");
+     /* assets/images/cold-liquid-light-black-and-white-white-night-618853-pxhere.com.jpg */
 
 }
 
 .jumbotron{
     position: relative;
-    background: url("../assets/images/beer442Edited.jpg");
+    background: url("/assets/images/beer442Edited.jpg");
 }
 
 .jumbotron h4 {
@@ -28,19 +29,19 @@ body {
 }
 
 .card-header {
-    background: url("../assets/images/beerCardHeader.png");
+    background: url("/assets/images/beerCardHeader.png");
 }
 
 .nav-item {
-    background: url("../assets/images/beerNavTab.png");
+    background: url("/assets/images/beerNavTab.png");
 }
 
 .card-footer {
-    background: url("../assets/images/beerCardFooter.png");
+    background: url("/assets/images/beerCardFooter.png");
 }
 
 a[aria-selected="false"] {
-    background: url("../assets/images/navTabInactive.png");
+    background: url("/assets/images/navTabInactive.png");
 }
 
 a:link {
@@ -62,26 +63,26 @@ a:link {
     z-index: 0;
   }
   
-  .crossfade > figure:nth-child(1) { background-image: url("../assets/images/Beer_and_Wooden_Barrel_Background_Image.jpg"); }
+  .crossfade > figure:nth-child(1) { background-image: url("/assets/images/Beer_and_Wooden_Barrel_Background_Image.jpg"); }
   
   .crossfade > figure:nth-child(2) {
     animation-delay: 15s;
-    background-image: url("../assets/images/Beers_and_Beer_Wooden_Barrel_Background.jpg");
+    background-image: url("/assets/images/Beers_and_Beer_Wooden_Barrel_Background.jpg");
   }
   
   .crossfade > figure:nth-child(3) {
     animation-delay: 30s;
-    background-image: url("../assets/images/alcohol-alcoholism-ale-background-bar-beer-1447581-pxhere.com.jpg");
+    background-image: url("/assets/images/alcohol-alcoholism-ale-background-bar-beer-1447581-pxhere.com.jpg");
   }
   
   .crossfade > figure:nth-child(4) {
     animation-delay: 45s;
-    background-image: url("../assets/images/alcohol-alcoholism-ale-background-bar-beer-1457325-pxhere.com.jpg");
+    background-image: url("/assets/images/alcohol-alcoholism-ale-background-bar-beer-1457325-pxhere.com.jpg");
   }
   
   .crossfade > figure:nth-child(5) {
     animation-delay: 60s;
-    background-image: url("../assets/images/cold-liquid-bar-foam-celebration-beverage-495781-pxhere.com.jpg");
+    background-image: url("/assets/images/cold-liquid-bar-foam-celebration-beverage-495781-pxhere.com.jpg");
   }
   
   @keyframes 
@@ -104,3 +105,7 @@ a:link {
   }
   }
   /* END SLIDESHOW  maybe add new colors later...*/
+
+
+  /* sign in  */
+  
