@@ -129,7 +129,6 @@ $(document).ready(function () {
     var isRetiredValue = $(this).data("isRetired");
     var availabilityValue = $(this).data("availability");
     var availabilityDescValue = $(this).data("availability-desc");
-
     /* DESCRIPTION */
     //NAV 1 - display the values inside the nav description
     //but first clean the current content tada...
