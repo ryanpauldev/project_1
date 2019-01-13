@@ -35,10 +35,6 @@ body {
     background: url("../assets/images/beerNavTab.png");
 }
 
-.card-footer {
-    background: url("../assets/images/beerCardFooter.png");
-}
-
 a[aria-selected="false"] {
     background: url("../assets/images/navTabInactive.png");
 }
