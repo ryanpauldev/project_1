@@ -140,7 +140,8 @@ initApp = function () {
 
             //get the value of the tr id
             var rowId = $(this).attr("data-id");
-            var rowName = $(this).attr("data-name");
+            var rowName = $(this).attr("data-name")
+            /* alert(`this beer is: ${rowName}`); */
 
             //beerInfoHeader on card title
             $("#beerInfoHeader").empty();
