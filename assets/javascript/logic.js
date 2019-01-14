@@ -18,9 +18,7 @@ initApp = function () {
       if (user) {
 
         /* site logic start here */
-
-        $(document).ready(function () {
-          console.log("ready");
+        console.log(user);
           //global variables
           var resultBeers;
 
@@ -40,7 +38,7 @@ initApp = function () {
             //trying to connect to the API in the sandbox  
             //build the query
             // example endpoint beers:::> http://api.brewerydb.com/v2/{endpoint}/?key=abcdef
-            var queryURL = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search?key=c0a5fceb48f0e2d48f8850e64307b88f&q=" + searchInput;
+            var queryURL = "https://alex-rosencors.herokuapp.com/?url=https://sandbox-api.brewerydb.com/v2/search?key=c0a5fceb48f0e2d48f8850e64307b88f&q=" + searchInput;
 
             /* Important do not touch
             var queryURL = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search?key=c0a5fceb48f0e2d48f8850e64307b88f&q=guinness";
@@ -52,7 +50,7 @@ initApp = function () {
               method: "GET"
             }).then(function (response) {
               //console.log(response);
-
+              console.log("somethign");
 
               //if the AJAX call returns something 
               if (response.data.length && response.data.length > 0) {
@@ -130,7 +128,9 @@ initApp = function () {
                 //display the number of beers found in the card title
                 $("#number-results").text("No data available");
               }
-            });
+            }).catch(function(err) {
+              console.log(err);
+            })
           });
 
           //event listener for a click on a table tr on list-beers 
@@ -306,11 +306,11 @@ initApp = function () {
             });
 
           });
-        });
         /* site logic ends here */
       } else {
         // User is signed out.
-        window.location.replace('index.html')
+        window.location.replace('index.html');
+        console.log("Auth issues");
       }
     },
     function (error) {
@@ -318,3 +318,5 @@ initApp = function () {
     }
   );
 };
+
+$(document).ready(initApp);
