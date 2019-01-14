@@ -8,7 +8,7 @@ var config = {
   storageBucket: "project1-8d4f2.appspot.com",
   messagingSenderId: "933735402646"
 };
-
+//test please ignore.
 firebase.initializeApp(config);
 
 //check if user is login 
