@@ -49,7 +49,7 @@ initApp = function () {
             //trying to connect to the API in the sandbox  
             //build the query
             // example endpoint beers:::> http://api.brewerydb.com/v2/{endpoint}/?key=abcdef
-            var queryURL = "https://alex-rosencors.herokuapp.com/?url=https://sandbox-api.brewerydb.com/v2/search?key=c0a5fceb48f0e2d48f8850e64307b88f&q=" + searchInput;
+            var queryURL = "https://alex-rosencors.herokuapp.com/?url=https://sandbox-api.brewerydb.com/v2/search?key=5ad365c714224718cf10a44102b9976b&q=" + searchInput;
 
             /* Important do not touch
             var queryURL = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search?key=c0a5fceb48f0e2d48f8850e64307b88f&q=guinness";
@@ -152,7 +152,7 @@ initApp = function () {
             $("#beerInfoHeader").show();
             $("#nav-tabContent").show();
             $("#nav-card").show();
-            document.getElementById("beerInfoHeader").style.visibility = "collapse";
+            
             
             //change the color of the row
             $(this).addClass("table-success");
@@ -160,7 +160,7 @@ initApp = function () {
             //get the value of the tr id
             var rowId = $(this).attr("data-id");
             var rowName = $(this).attr("data-name")
-            alert(`this beer is: ${rowName}`);
+            /* alert(`this beer is: ${rowName}`); */
 
             //beerInfoHeader on card title
             $("#beerInfoHeader").empty();
@@ -187,7 +187,7 @@ initApp = function () {
             var hisOrganic = $("<h4>").text("Is organic: " + isOrganicValue);
             var hisRetired = $("<h4>").text("Is retired: " + isRetiredValue);
             var havailabilityValue = $("<h4>").text("Availability: " + availabilityValue);
-            var havailabilityDescValue = $("<h4>").text("Availability : " + availabilityDescValue);
+            var havailabilityDescValue = $("<h4>").text("Availability: " + availabilityDescValue);
 
             //append everything to the div
             divDescription.append(pDescription, hAbv, hisOrganic, hisRetired, havailabilityValue, havailabilityDescValue)
@@ -206,6 +206,7 @@ initApp = function () {
             var imgTag = $("<img>");
 
             imgTag.addClass("") // class img thumbnail
+              .addClass("rounded mx-auto d-block")
               .attr("src", imageSrc) // img src
               .attr("alt", imageSrc); // alt
             $("#nav-image").append(imgTag);
@@ -221,14 +222,16 @@ initApp = function () {
 
             //var searchInput = $("#search-input").val().trim();
             console.log(rowName);
-
+            //back up id and keys REMEMBER TO CHANGE THE ID AND KEYS BELOW TOO
+            // e80e6372 || 88c637ea
+            // 024d421a03345ac14de31cdb5abafe79 || 2b84a03944fd42182d9ad570fa354ada
             var calorieQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + rowName;
             $.ajax({
               url: calorieQuery,
               method: "GET",
               headers: {
-                "x-app-id": "87764d56",
-                "x-app-key": "64b0113675aca1dbf6f67d9df8299556"
+                "x-app-id": "7e095527",   // backup id: 7e095527 original: 87764d56
+                "x-app-key": "fd9ce596a8a662b83bb86f924e19fd1e"  //fd9ce596a8a662b83bb86f924e19fd1e original: 64b0113675aca1dbf6f67d9df8299556
               }
             }).then(function (responseCalories) {
               console.log(responseCalories);
@@ -260,8 +263,8 @@ initApp = function () {
                 url: nutritionQuery,
                 method: "GET",
                 headers: {
-                  "x-app-id": "87764d56",
-                  "x-app-key": "64b0113675aca1dbf6f67d9df8299556"
+                  "x-app-id": "7e095527",
+                  "x-app-key": "fd9ce596a8a662b83bb86f924e19fd1e"
                 }
               }).then(function (responseNutrtion) {
                 console.log("complete nutrition info here.");
@@ -299,7 +302,7 @@ initApp = function () {
             // testId = "WHQisc"; 
             //change later by rowId 
             var testId = rowId;
-            var queryBeer = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/beer/" + testId + "/ingredients?key=c0a5fceb48f0e2d48f8850e64307b88f";
+            var queryBeer = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/beer/" + testId + "/ingredients?key=5ad365c714224718cf10a44102b9976b";
             //creates the AJAX call for the specific beerId aka rowId
             $.ajax({
               url: queryBeer,
