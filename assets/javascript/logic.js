@@ -19,128 +19,129 @@ initApp = function () {
 
         /* site logic start here */
         console.log(user);
-        //global variables
-        var resultBeers;
+          //global variables
+          var resultBeers;
 
-        //event listener to fire up the search and acces the API
-        $("#search-button").on("click", function (event) {
-          //prevent reloads
-          event.preventDefault();
-          //hiding the jumbotron to full display the table list-beers
-          $(".jumbotron").hide();
-          //clear the current content of the table
-          $("#list-beers").empty();
+          //event listener to fire up the search and acces the API
+          $("#search-button").on("click", function (event) {
+            //prevent reloads
+            event.preventDefault();
+            //hiding the jumbotron to full display the table list-beers
+            $(".jumbotron").hide();
+            //clear the current content of the table
+            $("#list-beers").empty();
 
-          // get the content of the input
-          var searchInput = $("#search-input").val().trim();
-          console.log(searchInput);
+            // get the content of the input
+            var searchInput = $("#search-input").val().trim();
+            console.log(searchInput);
 
-          //trying to connect to the API in the sandbox  
-          //build the query
-          // example endpoint beers:::> http://api.brewerydb.com/v2/{endpoint}/?key=abcdef
-          var queryURL = "https://alex-rosencors.herokuapp.com/?url=https://sandbox-api.brewerydb.com/v2/search?key=5ad365c714224718cf10a44102b9976b&q=" + searchInput;
+            //trying to connect to the API in the sandbox  
+            //build the query
+            // example endpoint beers:::> http://api.brewerydb.com/v2/{endpoint}/?key=abcdef
+            var queryURL = "https://alex-rosencors.herokuapp.com/?url=https://sandbox-api.brewerydb.com/v2/search?key=5ad365c714224718cf10a44102b9976b&q=" + searchInput;
 
-          /* Important do not touch
-          var queryURL = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search?key=c0a5fceb48f0e2d48f8850e64307b88f&q=guinness";
-           */
+            /* Important do not touch
+            var queryURL = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search?key=c0a5fceb48f0e2d48f8850e64307b88f&q=guinness";
+             */
 
-          // Creates AJAX call for the specific  button being clicked
-          $.ajax({
-            url: queryURL,
-            method: "GET"
-          }).then(function (response) {
-            //console.log(response);
-          
-            //if the AJAX call returns something 
-            if (response.data.length && response.data.length > 0) {
+            // Creates AJAX call for the specific  button being clicked
+            $.ajax({
+              url: queryURL,
+              method: "GET"
+            }).then(function (response) {
+              //console.log(response);
+              console.log("somethign");
 
-              console.log(`length: ${response.data.length}`);
-              //get the results as a giant resultsBeers Object
-              resultBeers = response.data;
-              console.log(resultBeers);
+              //if the AJAX call returns something 
+              if (response.data.length && response.data.length > 0) {
 
-              //display the number of beers found in the card title
-              $("#number-results").text(resultBeers.length);
+                console.log(`length: ${response.data.length}`);
+                //get the results as a giant resultsBeers Object
+                resultBeers = response.data;
+                console.log(resultBeers);
 
-              //get the id of the returned beers to create a second query to get specific information about the selected beer
+                //display the number of beers found in the card title
+                $("#number-results").text(resultBeers.length);
 
-              /*  var beerId = resultBeers[2].id.trim();
-               console.log(`Beer Id:${beerId}`); */
+                //get the id of the returned beers to create a second query to get specific information about the selected beer
 
-              //for loop to create the table results content\
-              for (var i = 0; i < resultBeers.length; i++) {
+                /*  var beerId = resultBeers[2].id.trim();
+                 console.log(`Beer Id:${beerId}`); */
 
-                //local variables to get store the data
-                var id = resultBeers[i].id.trim();
+                //for loop to create the table results content\
+                for (var i = 0; i < resultBeers.length; i++) {
 
-                //testId
-                testId = id;
-                var name = resultBeers[i].name;
-                var type = resultBeers[i].type;
+                  //local variables to get store the data
+                  var id = resultBeers[i].id.trim();
 
-                //inline if statement to check if established exists 
-                var established = ((resultBeers[i].established) ? resultBeers[i].established : "Not available");
+                  //testId
+                  testId = id;
+                  var name = resultBeers[i].name;
+                  var type = resultBeers[i].type;
 
-                //inline if statement to check if category exists
-                var category = ((resultBeers[i].style) ? resultBeers[i].style.name : "Not available");
+                  //inline if statement to check if established exists 
+                  var established = ((resultBeers[i].established) ? resultBeers[i].established : "Not available");
 
-                //create a new row using jQuery and 
-                var newRow = $("<tr>");
-                newRow.attr("data-id", id);
-                newRow.attr("data-name", name);
-                //!!!really crazy part stay with me :)
-                //its gonna get really really nasty
+                  //inline if statement to check if category exists
+                  var category = ((resultBeers[i].style) ? resultBeers[i].style.name : "Not available");
 
-                // Using the data method:          
-                newRow.data("abv", resultBeers[i].abv);
-                newRow.data("desc", resultBeers[i].description);
-                newRow.data("isOrganic", resultBeers[i].isOrganic);
-                newRow.data("isRetired", resultBeers[i].isRetired);
-                //from one result to another image links are store either under labels or images
-                var imgSrc;
-                if (resultBeers[i].labels) {
-                  imgSrc = resultBeers[i].labels.medium;
-                } else {
-                  if (resultBeers[i].images) {
-                    imgSrc = resultBeers[i].images.medium;
+                  //create a new row using jQuery and 
+                  var newRow = $("<tr>");
+                  newRow.attr("data-id", id);
+                  newRow.attr("data-name", name);
+                  //!!!really crazy part stay with me :)
+                  //its gonna get really really nasty
+
+                  // Using the data method:          
+                  newRow.data("abv", resultBeers[i].abv);
+                  newRow.data("desc", resultBeers[i].description);
+                  newRow.data("isOrganic", resultBeers[i].isOrganic);
+                  newRow.data("isRetired", resultBeers[i].isRetired);
+                  //from one result to another image links are store either under labels or images
+                  var imgSrc;
+                  if (resultBeers[i].labels) {
+                    imgSrc = resultBeers[i].labels.medium;
+                  } else {
+                    if (resultBeers[i].images) {
+                      imgSrc = resultBeers[i].images.medium;
+                    }
                   }
+                  //second query moved into inside the event listener for a click on the table import  
+                  //still passing data to data method()
+                  newRow.data("image", imgSrc);
+                  //inline statement to get fill the data
+                  newRow.data("availability", ((resultBeers[i].available) ? resultBeers[i].available.name : "Not data available"));
+
+                  newRow.data("availability-desc", ((resultBeers[i].available) ? resultBeers[i].available.name.description : "Not data available"));
+
+                  var rowName = $("<td>").text(name).appendTo(newRow);
+                  var rowType = $("<td>").text(type).appendTo(newRow);
+                  var rowEstablished = $("<td>").text(established).appendTo(newRow);
+                  var rowCategory = $("<td>").text(category).appendTo(newRow);
+                  //append the newRow to the table list-results
+                  $("#list-beers").append(newRow);
+
+
                 }
-                //second query moved into inside the event listener for a click on the table import  
-                //still passing data to data method()
-                newRow.data("image", imgSrc);
-                //inline statement to get fill the data
-                newRow.data("availability", ((resultBeers[i].available) ? resultBeers[i].available.name : "Not data available"));
 
-                newRow.data("availability-desc", ((resultBeers[i].available) ? resultBeers[i].available.description : "Not data available"));
-
-                var rowName = $("<td>").text(name).appendTo(newRow);
-                var rowType = $("<td>").text(type).appendTo(newRow);
-                var rowEstablished = $("<td>").text(established).appendTo(newRow);
-                var rowCategory = $("<td>").text(category).appendTo(newRow);
-                //append the newRow to the table list-results
-                $("#list-beers").append(newRow);
-
-
+              } else { // in case there no data available for the search input
+                //display the number of beers found in the card title
+                $("#number-results").text("No data available");
               }
+            }).catch(function(err) {
+              console.log(err);
+            })
+          });
 
-            } else { // in case there no data available for the search input
-              //display the number of beers found in the card title
-              $("#number-results").text("No data available");
-            }
-          }).catch(function (err) {
-            console.log(err);
-          })
-        });
-
-        //event listener for a click on a table tr on list-beers 
-        $(document).on("click", "#list-beers tr", function () {
+          //event listener for a click on a table tr on list-beers 
+          $(document).on("click", "#list-beers tr", function () {
             //change the color of the row
             $(this).addClass("table-success");
 
             //get the value of the tr id
             var rowId = $(this).attr("data-id");
             var rowName = $(this).attr("data-name")
-            //alert(`this beer is: ${rowName}`);
+            /* alert(`this beer is: ${rowName}`); */
 
             //beerInfoHeader on card title
             $("#beerInfoHeader").empty();
@@ -154,7 +155,6 @@ initApp = function () {
             var isRetiredValue = $(this).data("isRetired");
             var availabilityValue = $(this).data("availability");
             var availabilityDescValue = $(this).data("availability-desc");
-
             /* DESCRIPTION */
             //NAV 1 - display the values inside the nav description
             //but first clean the current content tada...
@@ -168,7 +168,7 @@ initApp = function () {
             var hisOrganic = $("<h4>").text("Is organic: " + isOrganicValue);
             var hisRetired = $("<h4>").text("Is retired: " + isRetiredValue);
             var havailabilityValue = $("<h4>").text("Availability: " + availabilityValue);
-            var havailabilityDescValue = $("<h4>").text("Availability : " + availabilityDescValue);
+            var havailabilityDescValue = $("<h4>").text("Availability: " + availabilityDescValue);
 
             //append everything to the div
             divDescription.append(pDescription, hAbv, hisOrganic, hisRetired, havailabilityValue, havailabilityDescValue)
@@ -187,6 +187,7 @@ initApp = function () {
             var imgTag = $("<img>");
 
             imgTag.addClass("") // class img thumbnail
+              .addClass("rounded mx-auto d-block")
               .attr("src", imageSrc) // img src
               .attr("alt", imageSrc); // alt
             $("#nav-image").append(imgTag);
@@ -202,14 +203,16 @@ initApp = function () {
 
             //var searchInput = $("#search-input").val().trim();
             console.log(rowName);
-
+            //back up id and keys REMEMBER TO CHANGE THE ID AND KEYS BELOW TOO
+            // e80e6372 || 88c637ea
+            // 024d421a03345ac14de31cdb5abafe79 || 2b84a03944fd42182d9ad570fa354ada
             var calorieQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + rowName;
             $.ajax({
               url: calorieQuery,
               method: "GET",
               headers: {
-                "x-app-id": "87764d56",
-                "x-app-key": "64b0113675aca1dbf6f67d9df8299556"
+                "x-app-id": "7e095527",   // backup id: 7e095527 original: 87764d56
+                "x-app-key": "fd9ce596a8a662b83bb86f924e19fd1e"  //fd9ce596a8a662b83bb86f924e19fd1e original: 64b0113675aca1dbf6f67d9df8299556
               }
             }).then(function (responseCalories) {
               console.log(responseCalories);
@@ -241,8 +244,8 @@ initApp = function () {
                 url: nutritionQuery,
                 method: "GET",
                 headers: {
-                  "x-app-id": "87764d56",
-                  "x-app-key": "64b0113675aca1dbf6f67d9df8299556"
+                  "x-app-id": "7e095527",
+                  "x-app-key": "fd9ce596a8a662b83bb86f924e19fd1e"
                 }
               }).then(function (responseNutrtion) {
                 console.log("complete nutrition info here.");
@@ -280,7 +283,7 @@ initApp = function () {
             // testId = "WHQisc"; 
             //change later by rowId 
             var testId = rowId;
-            /* var queryBeer = "https://alex-rosencors.herokuapp.com/?url=https://sandbox-api.brewerydb.com/v2/beer/" + testId + "/ingredients?key=c0a5fceb48f0e2d48f8850e64307b88f";
+            var queryBeer = "https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/beer/" + testId + "/ingredients?key=5ad365c714224718cf10a44102b9976b";
             //creates the AJAX call for the specific beerId aka rowId
             $.ajax({
               url: queryBeer,
@@ -301,23 +304,22 @@ initApp = function () {
               } else {
 
                 $("#nav-ingredients").text("No data available!");
-             */
-            //pending a new key for nutrition API we will display this
-            $("#nav-ingredients").text("Pending a new key for Nutrition API");
-          });
+              }
+              //console.log(`length: ${response.data.length}`);      
+            });
 
-    //});
-  /* site logic ends here */
-} else {
-  // User is signed out.
-  window.location.replace('index.html');
-  console.log("Auth issues");
-}
-},
-function (error) {
-  console.log("Auth error:" + error);
-}
-);
+          });
+        /* site logic ends here */
+      } else {
+        // User is signed out.
+        window.location.replace('index.html');
+        console.log("Auth issues");
+      }
+    },
+    function (error) {
+      console.log("Auth error:" + error);
+    }
+  );
 };
 
 $(document).ready(initApp);
