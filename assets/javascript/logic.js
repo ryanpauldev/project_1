@@ -11,6 +11,14 @@ var config = {
 
 firebase.initializeApp(config);
 
+//hide initial results and contents tabs
+document.getElementById("accordion").style.display = "none";
+
+document.getElementById("nav-tab").style.display = "none";
+document.getElementById("beerInfoHeader").style.display = "none";
+document.getElementById("nav-tabContent").style.display = "none";
+document.getElementById("nav-card").style.display = "none";
+
 //check if user is login 
 initApp = function () {
   firebase.auth().onAuthStateChanged(
@@ -30,6 +38,9 @@ initApp = function () {
             $(".jumbotron").hide();
             //clear the current content of the table
             $("#list-beers").empty();
+            //show results table and card
+            $("#accordion").show();
+            
 
             // get the content of the input
             var searchInput = $("#search-input").val().trim();
@@ -135,6 +146,14 @@ initApp = function () {
 
           //event listener for a click on a table tr on list-beers 
           $(document).on("click", "#list-beers tr", function () {
+            
+            //show the nav bar and its contents
+            $("#nav-tab").show();
+            $("#beerInfoHeader").show();
+            $("#nav-tabContent").show();
+            $("#nav-card").show();
+            document.getElementById("beerInfoHeader").style.visibility = "collapse";
+            
             //change the color of the row
             $(this).addClass("table-success");
 

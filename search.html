@@ -56,35 +56,43 @@
       </div>
     </form>
 
-    <!-- Results display -->
+<!-- Results display -->
     <!-- Beginning table -->
-    <div class="card mb-4 border-warning">
-      <h5 class="card-header">Results</h5>
-      <div class="card-body bg-warning">
-        <h5 class="card-title"><span id="number-results"></span></h5>
-        <!-- begin of the table -->
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <!-- We only display the name of the beer and maybe the origin and alias -->
-              <th scope="col">Beer Name</th>
-              <th scope="col">Type</th> <!-- later we will have caterogy as well as type -->
-              <th scope="col">Date Established</th>
-              <th scope="col">Category</th>
-            </tr>
-          </thead>
-          <tbody id="list-beers">
-            <!-- Content generated dynamically -->
-          </tbody>
-        </table>
+    <div class="accordion" id="accordion">
+      <div class="card mb-4 border-warning">
+        <h5 class="card-header">
+        <button class="btn btn-link" id="collapse-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Results
+        </button>
+      </h5>
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body bg-warning">
+          <h5 class="card-title"><span id="number-results"></span></h5>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <!-- We only display the name of the beer and maybe the origin and alias -->
+                <th scope="col">Beer Name</th>
+                <th scope="col">Type</th> <!-- later we will have caterogy as well as type -->
+                <th scope="col">Date Established</th>
+                <th scope="col">Category</th>
+              </tr>
+            </thead>
+            <tbody id="list-beers">
+              <!-- Content generated dynamically -->
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
+    </div>
+    
     <!-- End Table -->
 
     <!-- BEGINNING OF NAV BAR -->
     <br>
    <!--  <div class=container> -->
-      <div class="card mb-4 border-warning">
+      <div class="card mb-4 border-warning" id="nav-card">
         <h5 class="card-header" id="beerInfoHeader">Info</h5>
         <div class="card-body bg-warning">
           <nav>
