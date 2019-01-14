@@ -7,6 +7,8 @@
    storageBucket: "project1-8d4f2.appspot.com",
    messagingSenderId: "933735402646"
  };
+ 
+ //init
  firebase.initializeApp(config);
 
  // Initialize the FirebaseUI Widget using Firebase.
