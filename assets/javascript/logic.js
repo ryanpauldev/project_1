@@ -112,7 +112,7 @@ initApp = function () {
                   //inline statement to get fill the data
                   newRow.data("availability", ((resultBeers[i].available) ? resultBeers[i].available.name : "Not data available"));
 
-                  newRow.data("availability-desc", ((resultBeers[i].available) ? resultBeers[i].available.name.description : "Not data available"));
+                  newRow.data("availability-desc", ((resultBeers[i].available) ? resultBeers[i].available.description : "Not data available"));
 
                   var rowName = $("<td>").text(name).appendTo(newRow);
                   var rowType = $("<td>").text(type).appendTo(newRow);
@@ -305,7 +305,7 @@ initApp = function () {
 
                 $("#nav-ingredients").text("No data available!");
               }
-              //console.log(`length: ${response.data.length}`);      
+                 
             });
 
           });
