@@ -20,6 +20,7 @@ initApp = function () {
         /* site logic start here */
 
         $(document).ready(function () {
+          console.log("ready");
           //global variables
           var resultBeers;
 
