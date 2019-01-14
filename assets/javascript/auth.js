@@ -7,23 +7,20 @@
    storageBucket: "project1-8d4f2.appspot.com",
    messagingSenderId: "933735402646"
  };
+ 
+ //init
  firebase.initializeApp(config);
 
  // Initialize the FirebaseUI Widget using Firebase.
  var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
  var uiConfig = {
-
    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
    signInSuccessUrl: 'search.html',
    signInOptions: [
      // Leave the lines as is for the providers you want to offer your users.
      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
      firebase.auth.GithubAuthProvider.PROVIDER_ID,
-
-     //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-     //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-     
      firebase.auth.EmailAuthProvider.PROVIDER_ID,
      firebase.auth.PhoneAuthProvider.PROVIDER_ID
    ],
