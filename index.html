@@ -7,11 +7,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Ewert" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />  
+  <link rel="icon" href="assets/images/clinking-beer-mugs_1f37b.png" type="image/x-icon" sizes="16x16">
   <!-- Google Verification -->
   <meta name="google-site-verification" content="2WEnwaXsTn6Uup_LEggybVdsUjKMSLBjla0-CmNaeHU" />
 
@@ -19,6 +21,16 @@
 </head>
 
 <body>
+
+<!-- tags for slideshow background -->
+<div class="crossfade">
+    <figure></figure>
+    <figure></figure>
+    <figure></figure>
+    <figure></figure>
+    <figure></figure>
+  </div>
+
   <!-- sign form using firebase UI -->
 
   <div class="container">
@@ -33,10 +45,10 @@
     </div>  
 
     <div class="card">
-        <div class="card-header lead">
-          Sign In Options
+        <div class="card-header border-warning lead">
+          <h5>Sign In Options</h5>
         </div>
-        <div class="card-body lead">
+        <div class="card-body bg-warning lead">
           <!-- content will be a div with the logo of each sign in providers -->
           <div id="firebaseui-auth-container"></div>
           
