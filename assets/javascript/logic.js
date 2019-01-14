@@ -143,6 +143,10 @@ initApp = function () {
             var rowName = $(this).attr("data-name")
             alert(`this beer is: ${rowName}`);
 
+            //beerInfoHeader on card title
+            $("#beerInfoHeader").empty();
+            $("#beerInfoHeader").append(rowName);
+
             //remember the data method lol.
             //here is the time to call it back. Razen Sharingan!!! 
             var abvValue = $(this).data("abv");
@@ -227,6 +231,42 @@ initApp = function () {
 
               //append the divs to the nav 
               $("#nav-nutrition").append(calorieTag, servingTag);
+
+
+              //secondary ajax function to get complete info from nutritionix
+              var item_id = responseCalories.branded[0].nix_item_id;
+              var nutritionQuery = "https://trackapi.nutritionix.com/v2/search/item?nix_item_id=" + item_id;
+
+              $.ajax({
+                url: nutritionQuery,
+                method: "GET",
+                headers: {
+                  "x-app-id": "87764d56",
+                  "x-app-key": "64b0113675aca1dbf6f67d9df8299556"
+                }
+              }).then(function (responseNutrtion) {
+                console.log("complete nutrition info here.");
+                console.log(responseNutrtion);
+
+                //gather info for protein, sodium, and total carbs
+                var protein = responseNutrtion.foods[0].nf_protein;
+                var sodium = responseNutrtion.foods[0].nf_sodium;
+                var carbs = responseNutrtion.foods[0].nf_total_carbohydrate;
+
+                //create div tags for protein, sodium, and total carbs
+                var proteinTag = $("<div>");
+                var sodiumTag = $("<div>");
+                var carbsTag = $("<div>");
+
+                //giving html tags to div
+                proteinTag.html("<h4>Protein:</h4>" + protein + " g");
+                sodiumTag.html("<h4>Sodium:</h4>" + sodium + " mg");
+                carbsTag.html("<h4>Total Carbohydrates:</h4>" + carbs + " g");
+
+                //appending divs to nutrition nav
+                $("#nav-nutrition").append(proteinTag, sodiumTag, carbsTag);
+              });
+
             });
 
             // get the nutrition and serving size back from data
@@ -274,7 +314,7 @@ initApp = function () {
       }
     },
     function (error) {
-      console.log("Auth error:"+ error);
+      console.log("Auth error:" + error);
     }
   );
 };
