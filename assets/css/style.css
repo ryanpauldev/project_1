@@ -16,6 +16,11 @@ body {
 #search-button {
     font-weight: bold;
 }
+#collapse-link{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
 
 .nav {
     font-weight: bold;
@@ -48,6 +53,21 @@ a[aria-selected="false"] {
 a:link {
     color: black;
 }
+
+/* table scrollable   */
+tbody{
+    
+    overflow:auto;
+    height:200px;
+    width:100%;
+    position: relative;
+    
+}  
+  thead tr{
+    
+    position: relative;
+    width:100%;
+  }
 /* SLIDESHOW BACKGROUND NO TOUCHY */
 .crossfade > figure {
     animation: imageAnimation 75s linear infinite 0s;
@@ -108,5 +128,5 @@ a:link {
   /* END SLIDESHOW*/
 
 
-  /* sign in  */
+  
   
