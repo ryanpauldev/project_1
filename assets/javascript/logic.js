@@ -152,6 +152,9 @@ initApp = function () {
             $("#beerInfoHeader").show();
             $("#nav-tabContent").show();
             $("#nav-card").show();
+
+            //collapse nav tab on click
+            $("#collapse-link").click();
             
             
             //change the color of the row
