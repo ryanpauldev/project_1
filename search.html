@@ -26,23 +26,17 @@
 
   <!--  JUMBOTRON HERE 🍺🍻-->
   <br>
-
   <div class=container>
-
+    <!-- Jumbotron -->
     <div class="jumbotron jumbotron-fluid text-center text-dark">
       <div class="container">
-
         <h1 class="display-2">Beer ID</h1>
         <h4 class="lead">🍺🍺🍺 Find all the information on your Favorite Beer 🍺🍺🍺
         </h4>
-
-
       </div>
     </div>
 
-
     <!-- SEARCH BAR -->
-
     <form role="form">
       <div class="form-group">
         <div class="form-row">
@@ -56,168 +50,90 @@
       </div>
     </form>
 
-<!-- Results display -->
+    <!-- Results display -->
     <!-- Beginning table -->
     <div class="accordion" id="accordion">
-
       <div class="card mb-4 border-warning">
         <h5 class="card-header">
-        <button class="btn btn-link" id="collapse-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Results
-        </button>
-      </h5>
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-        <div class="card-body bg-warning">
-          <h5 class="card-title"><span id="number-results"></span></h5>
-          <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <!-- We only display the name of the beer and maybe the origin and alias -->
-                <th scope="col">Beer Name</th>
-                <th scope="col">Type</th> <!-- later we will have caterogy as well as type -->
-                <th scope="col">Date Established</th>
-                <th scope="col">Category</th>
-              </tr>
-            </thead>
-            <tbody id="list-beers">
-              <!-- Content generated dynamically -->
-            </tbody>
-          </table>
+          <button class="btn btn-link" id="collapse-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            Results
+          </button>
+        </h5>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body bg-warning">
+            <h5 class="card-title"><span id="number-results"></span></h5>
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <!-- We only display the name of the beer and maybe the origin and alias -->
+                  <th scope="col">Beer Name</th>
+                  <th scope="col">Type</th> <!-- later we will have caterogy as well as type -->
+                  <th scope="col">Date Established</th>
+                  <th scope="col">Category</th>
+                </tr>
+              </thead>
+              <tbody id="list-beers">
+                <!-- Content generated dynamically -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-    
     <!-- End Table -->
 
     <!-- BEGINNING OF NAV BAR -->
     <br>
-   <!--  <div class=container> -->
-      <div class="card mb-4 border-warning" id="nav-card">
-        <h5 class="card-header" id="beerInfoHeader">Info</h5>
-        <div class="card-body bg-warning">
-          <nav>
-            <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
-
-              <a class="nav-item nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description"
-                role="tab" aria-controls="nav-home" aria-selected="true">Description</a>
-
-              <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#nav-image" role="tab"
-                aria-controls="nav-home" aria-selected="false">Image</a>
-
-              <a class="nav-item nav-link" id="nav-nutrition-tab" data-toggle="tab" href="#nav-nutrition" role="tab"
-                aria-controls="nav-profile" aria-selected="false">Nutrition</a>
-
-              <a class="nav-item nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab"
-                aria-controls="nav-contact" aria-selected="false">Reviews</a>
-
-              <a class="nav-item nav-link" id="nav-ingredients-tab" data-toggle="tab" href="#nav-ingredients" role="tab"
-                aria-controls="nav-contact" aria-selected="false">Ingredients</a>
-
-              <a class="nav-item nav-link" id="nav-location-tab" data-toggle="tab" href="#nav-location" role="tab"
-                aria-controls="nav-contact" aria-selected="false">Location</a>
-
-              <!-- NAV TAB CONTENT HERE -->
-          </nav>
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab"><br>This
-              is placeholder text for the Description tab</div>
-            <div class="tab-pane fade" id="nav-image" role="tabpanel" aria-labelledby="nav-image-tab"><br>This is
-              placeholder text for the History tab</div>
-            <div class="tab-pane fade" id="nav-nutrition" role="tabpanel" aria-labelledby="nav-nutrition-tab"><br>This is
-              placeholder text for the Nutrition tab</div>
-            <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab"><br>This is
-              placeholder
-              text for the Reviews tab</div>
-            <div class="tab-pane fade" id="nav-ingredients" role="tabpanel" aria-labelledby="nav-ingredients-tab"><br>This
-              is
-              placeholder text for the Ingredients tab</div>
-            <div class="tab-pane fade" id="nav-location" role="tabpanel" aria-labelledby="nav-location-tab"><br>This is
-              placeholder text for the Location tab</div>
-          </div>
 
     <div class="card mb-4 border-warning">
-      <h5 class="card-header">
-      <button class="btn btn-link" id="collapse-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Results
-      </button>
-    </h5>
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <h5 class="card-header" id="beerInfoHeader">Info</h5>
       <div class="card-body bg-warning">
-        <h5 class="card-title"><span id="number-results"></span></h5>
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <!-- We only display the name of the beer and maybe the origin and alias -->
-              <th scope="col">Beer Name</th>
-              <th scope="col">Type</th> <!-- later we will have caterogy as well as type -->
-              <th scope="col">Date Established</th>
-              <th scope="col">Category</th>
-            </tr>
-          </thead>
-          <tbody id="list-beers">
-            <!-- Content generated dynamically -->
-          </tbody>
-        </table>
+        <nav>
+          <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+
+            <a class="nav-item nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab"
+              aria-controls="nav-home" aria-selected="true">Description</a>
+
+            <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#nav-image" role="tab"
+              aria-controls="nav-home" aria-selected="false">Image</a>
+
+            <a class="nav-item nav-link" id="nav-nutrition-tab" data-toggle="tab" href="#nav-nutrition" role="tab"
+              aria-controls="nav-profile" aria-selected="false">Nutrition</a>
+
+            <a class="nav-item nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab"
+              aria-controls="nav-contact" aria-selected="false">Reviews</a>
+
+            <a class="nav-item nav-link" id="nav-ingredients-tab" data-toggle="tab" href="#nav-ingredients" role="tab"
+              aria-controls="nav-contact" aria-selected="false">Ingredients</a>
+
+            <a class="nav-item nav-link" id="nav-location-tab" data-toggle="tab" href="#nav-location" role="tab"
+              aria-controls="nav-contact" aria-selected="false">Location</a>
+
+            <!-- NAV TAB CONTENT HERE -->
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab"><br></div>
+          <div class="tab-pane fade" id="nav-image" role="tabpanel" aria-labelledby="nav-image-tab"><br></div>
+          <div class="tab-pane fade" id="nav-nutrition" role="tabpanel" aria-labelledby="nav-nutrition-tab"><br></div>
+          <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab"><br></div>
+          <div class="tab-pane fade" id="nav-ingredients" role="tabpanel" aria-labelledby="nav-ingredients-tab"><br></div>
+          <div class="tab-pane fade" id="nav-location" role="tabpanel" aria-labelledby="nav-location-tab"><br></div>
+        </div>
+
+        <br><br><br><br><br><br>
       </div>
+
     </div>
-  </div>
-  </div>
+
 </div>
-
-
-  <!-- End Table -->
-
-  <!-- BEGINNING OF NAV BAR -->
-  <br>
-   <div class="container">
-  <div class="card mb-4 border-warning">
-    <h5 class="card-header" id="beerInfoHeader">Info</h5>
-    <div class="card-body bg-warning">
-      <nav>
-        <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
-
-          <a class="nav-item nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab"
-            aria-controls="nav-home" aria-selected="true">Description</a>
-
-          <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#nav-image" role="tab" aria-controls="nav-home"
-            aria-selected="false">Image</a>
-
-          <a class="nav-item nav-link" id="nav-nutrition-tab" data-toggle="tab" href="#nav-nutrition" role="tab"
-            aria-controls="nav-profile" aria-selected="false">Nutrition</a>
-
-          <a class="nav-item nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab"
-            aria-controls="nav-contact" aria-selected="false">Reviews</a>
-
-          <a class="nav-item nav-link" id="nav-ingredients-tab" data-toggle="tab" href="#nav-ingredients" role="tab"
-            aria-controls="nav-contact" aria-selected="false">Ingredients</a>
-
-          <a class="nav-item nav-link" id="nav-location-tab" data-toggle="tab" href="#nav-location" role="tab"
-            aria-controls="nav-contact" aria-selected="false">Location</a>
-
-          <!-- NAV TAB CONTENT HERE -->
-      </nav>
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab"><br></div>
-        <div class="tab-pane fade" id="nav-image" role="tabpanel" aria-labelledby="nav-image-tab"><br></div>
-        <div class="tab-pane fade" id="nav-nutrition" role="tabpanel" aria-labelledby="nav-nutrition-tab"><br></div>
-        <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab"><br></div>
-        <div class="tab-pane fade" id="nav-ingredients" role="tabpanel" aria-labelledby="nav-ingredients-tab"><br></div>
-        <div class="tab-pane fade" id="nav-location" role="tabpanel" aria-labelledby="nav-location-tab"><br></div>
-      </div>
-
-      <br><br><br><br><br><br>
-    </div>
-  </div> <!-- end div tag for card that contains navs -->
-  </div> 
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
-  <!--  -->
-  <script src="assets/javascript/logic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+    <!--  -->
+    <script src="assets/javascript/logic.js"></script>
 </body>
 
 </html>

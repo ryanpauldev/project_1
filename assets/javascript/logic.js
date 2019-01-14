@@ -17,7 +17,7 @@ document.getElementById("accordion").style.display = "none";
 document.getElementById("nav-tab").style.display = "none";
 document.getElementById("beerInfoHeader").style.display = "none";
 document.getElementById("nav-tabContent").style.display = "none";
-document.getElementById("nav-card").style.display = "none";
+//document.getElementById("nav-card").style.display = "none";
 
 //check if user is login 
 initApp = function () {
