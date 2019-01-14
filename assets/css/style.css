@@ -1,7 +1,7 @@
 body {
      background: url("../images/cold-liquid-light-black-and-white-white-night-618853-pxhere.com.jpg");
      /* assets/images/cold-liquid-light-black-and-white-white-night-618853-pxhere.com.jpg */
-
+     font-family: 'Sarabun', sans-serif;
 }
 
 .jumbotron{
@@ -47,6 +47,10 @@ a[aria-selected="false"] {
 
 a:link {
     color: black;
+}
+
+.tab-pane {
+    margin-top: 25px;
 }
 /* SLIDESHOW BACKGROUND NO TOUCHY */
 .crossfade > figure {
@@ -106,6 +110,10 @@ a:link {
   }
   }
   /* END SLIDESHOW*/
+
+  #nav-description {
+      font-family: 
+  }
 
 
   /* sign in  */
