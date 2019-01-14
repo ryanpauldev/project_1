@@ -152,9 +152,15 @@ initApp = function () {
             $("#beerInfoHeader").show();
             $("#nav-tabContent").show();
             $("#nav-card").show();
+<<<<<<< HEAD
             //hide the accordion
             $("#collapseOne").removeClass("show");          
             //$("#collapseOne").addClass("collapse");
+=======
+
+            //collapse nav tab on click
+            $("#collapse-link").click();
+>>>>>>> ab067f14b2c7e194cc1b5c1387a7f1d3366d0d2e
             
             
             //change the color of the row
