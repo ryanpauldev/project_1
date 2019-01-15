@@ -246,7 +246,7 @@ initApp = function () {
               console.log(responseCalories);
               //display beer calories for first result
               var beerCalorie = responseCalories.branded[0].nf_calories;
-              var servingSize = responseCalories.branded[0].serving_qty + responseCalories.branded[0].serving_unit;
+              var servingSize = responseCalories.branded[0].serving_qty + " " + responseCalories.branded[0].serving_unit;
 
               //passing the values of calories to data
               //newRow.data("calorie", beerCalorie);
