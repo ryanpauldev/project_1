@@ -72,6 +72,9 @@ initApp = function () {
               //display the number of beers found in the card title
               $("#number-results").text(` : ${resultBeers.length}`);
 
+              // expands the results table and card on search that returns something
+              $("#collapseOne").addClass("collapse show");
+
               //get the id of the returned beers to create a second query to get specific information about the selected beer
 
               /*  var beerId = resultBeers[2].id.trim();
@@ -86,13 +89,9 @@ initApp = function () {
                 //testId
                 testId = id;
                 var name = resultBeers[i].name;
-                var type = resultBeers[i].type;
-
-                //inline if statement to check if established exists 
-                var established = ((resultBeers[i].established) ? resultBeers[i].established : "Not available");
 
                 //inline if statement to check if category exists
-                var category = ((resultBeers[i].style) ? resultBeers[i].style.name : "Not available");
+                var category = ((resultBeers[i].style) ? resultBeers[i].style.name : "This is a Brewery");
 
                 //create a new row using jQuery and 
                 var newRow = $("<tr>");
@@ -118,24 +117,21 @@ initApp = function () {
                   }
                 }
 
+
                 //still passing data to data method()
                 newRow.data("image", imgSrc);
 
                 //inline statement to fill the data
                 newRow.data("availability", ((resultBeers[i].available) ? resultBeers[i].available.name : "Not data available"));
-
                 newRow.data("availability-desc", ((resultBeers[i].available) ? resultBeers[i].available.description : "Not data available"));
 
                 //create the table columns 
                 var rowName = $("<td>").text(name).appendTo(newRow);
-                var rowType = $("<td>").text(type).appendTo(newRow);
-                var rowEstablished = $("<td>").text(established).appendTo(newRow);
                 var rowCategory = $("<td>").text(category).appendTo(newRow);
 
                 //append the newRow to the table list-results
                 $("#list-beers").append(newRow);
-              }
-              //end for loop
+              } //end for loop
 
             } else { // in case there no data available for the search input
               //clear the nav tabs 
@@ -143,6 +139,9 @@ initApp = function () {
               $("#beerInfoHeader").hide();
               $("#nav-tabContent").hide();
               $("#nav-card").hide();
+              //remove show class
+              //$("#collapseOne").addClass("collapse");
+              $("#collapseOne").removeClass("show");
               //display 0 in the card title
               $("#number-results").text(": 0");
               //show the modal to inform the user that the search returns nothing
