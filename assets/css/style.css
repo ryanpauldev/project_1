@@ -2,11 +2,13 @@ body {
      background: url("../images/cold-liquid-light-black-and-white-white-night-618853-pxhere.com.jpg");
      /* assets/images/cold-liquid-light-black-and-white-white-night-618853-pxhere.com.jpg */
      font-family: 'Sarabun', sans-serif;
+     
 }
 
 .jumbotron{
     position: relative;
     background: url("../images/beer442Edited.jpg");
+    
 }
 
 .jumbotron h4 {
