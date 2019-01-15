@@ -122,8 +122,8 @@ initApp = function () {
                 newRow.data("image", imgSrc);
 
                 //inline statement to fill the data
-                newRow.data("availability", ((resultBeers[i].available) ? resultBeers[i].available.name : "Not data available"));
-                newRow.data("availability-desc", ((resultBeers[i].available) ? resultBeers[i].available.description : "Not data available"));
+                newRow.data("availability", ((resultBeers[i].available) ? resultBeers[i].available.name : "No data available"));
+                newRow.data("availability-desc", ((resultBeers[i].available) ? resultBeers[i].available.description : "No data available"));
 
                 //create the table columns 
                 var rowName = $("<td>").text(name).appendTo(newRow);
