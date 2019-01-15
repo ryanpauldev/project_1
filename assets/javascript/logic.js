@@ -39,7 +39,9 @@ initApp = function () {
             //clear the current content of the table
             $("#list-beers").empty();
             //show results table and card
-            $("#accordion").show();            
+            $("#accordion").show();      
+            // expands the results table and card on first search
+            $("#collapse-link").click();
 
             // get the content of the input
             var searchInput = $("#search-input").val().trim();
@@ -86,13 +88,11 @@ initApp = function () {
                   //testId
                   testId = id;
                   var name = resultBeers[i].name;
-                  var type = resultBeers[i].type;
 
-                  //inline if statement to check if established exists 
-                  var established = ((resultBeers[i].established) ? resultBeers[i].established : "Not available");
+
 
                   //inline if statement to check if category exists
-                  var category = ((resultBeers[i].style) ? resultBeers[i].style.name : "Not available");
+                  var category = ((resultBeers[i].style) ? resultBeers[i].style.name : "This is a Brewery");
 
                   //create a new row using jQuery and 
                   var newRow = $("<tr>");
@@ -128,8 +128,7 @@ initApp = function () {
 
                   //create the table columns 
                   var rowName = $("<td>").text(name).appendTo(newRow);
-                  var rowType = $("<td>").text(type).appendTo(newRow);
-                  var rowEstablished = $("<td>").text(established).appendTo(newRow);
+
                   var rowCategory = $("<td>").text(category).appendTo(newRow);
 
                   //append the newRow to the table list-results
