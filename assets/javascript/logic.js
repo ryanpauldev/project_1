@@ -138,6 +138,11 @@ initApp = function () {
               //end for loop
 
             } else { // in case there no data available for the search input
+              //clear the nav tabs 
+              $("#nav-tab").hide();
+              $("#beerInfoHeader").hide();
+              $("#nav-tabContent").hide();
+              $("#nav-card").hide();
               //display 0 in the card title
               $("#number-results").text(": 0");
               //show the modal to inform the user that the search returns nothing
@@ -349,7 +354,6 @@ initApp = function () {
               //if no ingredient where found because its a very limited and peaky API
               $("#nav-ingredients").text("No data available!");
             }
-
           });
 
         });
