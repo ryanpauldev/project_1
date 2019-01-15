@@ -117,13 +117,12 @@ initApp = function () {
                   }
                 }
 
-
                 //still passing data to data method()
                 newRow.data("image", imgSrc);
 
                 //inline statement to fill the data
-                newRow.data("availability", ((resultBeers[i].available) ? resultBeers[i].available.name : "Not data available"));
-                newRow.data("availability-desc", ((resultBeers[i].available) ? resultBeers[i].available.description : "Not data available"));
+                newRow.data("availability", ((resultBeers[i].available) ? resultBeers[i].available.name : "No data available"));
+                newRow.data("availability-desc", ((resultBeers[i].available) ? resultBeers[i].available.description : "No data available"));
 
                 //create the table columns 
                 var rowName = $("<td>").text(name).appendTo(newRow);
@@ -173,7 +172,6 @@ initApp = function () {
           var rowName = $(this).attr("data-name")
 
           /* alert(`this beer is: ${rowName}`); */
-
           //beerInfoHeader on card title
           $("#beerInfoHeader").empty();
           $("#beerInfoHeader").append(rowName);
@@ -245,13 +243,11 @@ initApp = function () {
 
           /* CALORIES */
           //NAV 3 - display calories
-
           //empties nav nutrtion to prevent stacking information from previous searches
           $("#nav-nutrition").empty();
+
           /* Calorie Search starts here */
           //search is based on the beer name so we will use rowName
-
-          //var searchInput = $("#search-input").val().trim();
           console.log(rowName);
           //back up id and keys REMEMBER TO CHANGE THE ID AND KEYS BELOW TOO
           // e80e6372 || 88c637ea
@@ -269,10 +265,6 @@ initApp = function () {
             //display beer calories for first result
             var beerCalorie = responseCalories.branded[0].nf_calories;
             var servingSize = responseCalories.branded[0].serving_qty + " " + responseCalories.branded[0].serving_unit;
-
-            //passing the values of calories to data
-            //newRow.data("calorie", beerCalorie);
-            //newRow.data("serving", servingSize);
 
             //create the div Tags
             var calorieTag = $("<div>");
