@@ -1,14 +1,12 @@
 body {
-     background: url("../images/cold-liquid-light-black-and-white-white-night-618853-pxhere.com.jpg");
-     /* assets/images/cold-liquid-light-black-and-white-white-night-618853-pxhere.com.jpg */
-     font-family: 'Sarabun', sans-serif;
-     
+    background: url("../images/cold-liquid-light-black-and-white-white-night-618853-pxhere.com.jpg");
+    /* assets/images/cold-liquid-light-black-and-white-white-night-618853-pxhere.com.jpg */
+    font-family: 'Sarabun', sans-serif;
 }
 
-.jumbotron{
+.jumbotron {
     position: relative;
     background: url("../images/beer442Edited.jpg");
-    
 }
 
 .jumbotron h4 {
@@ -18,7 +16,8 @@ body {
 #search-button {
     font-weight: bold;
 }
-#collapse-link{
+
+#collapse-link {
     color: black;
     font-weight: bold;
     text-decoration: none;
@@ -37,15 +36,11 @@ body {
 
 .card-header {
     background: url("../images/beerCardHeader.png");
-    
+
 }
 
 .nav-item {
     background: url("../images/beerNavTab.png");
-}
-
-.card-footer {
-    background: url("../images/beerCardFooter.png");
 }
 
 a[aria-selected="false"] {
@@ -61,21 +56,23 @@ a:link {
 }
 
 /* table scrollable   */
-tbody{
-    
-    overflow:auto;
-    height:200px;
-    width:100%;
+tbody {
+
+    overflow: auto;
+    height: 200px;
+    width: 100%;
     position: relative;
-    
-}  
-  thead tr{
-    
+
+}
+
+thead tr {
+
     position: relative;
-    width:100%;
-  }
+    width: 100%;
+}
+
 /* SLIDESHOW BACKGROUND NO TOUCHY */
-.crossfade > figure {
+.crossfade>figure {
     animation: imageAnimation 75s linear infinite 0s;
     backface-visibility: hidden;
     background-size: cover;
@@ -88,55 +85,58 @@ tbody{
     top: 0px;
     width: 100%;
     z-index: 0;
-  }
-  
-  .crossfade > figure:nth-child(1) { background-image: url("../images/Beer_and_Wooden_Barrel_Background_Image.jpg"); }
-  
-  .crossfade > figure:nth-child(2) {
+}
+
+.crossfade>figure:nth-child(1) {
+    background-image: url("../images/Beer_and_Wooden_Barrel_Background_Image.jpg");
+}
+
+.crossfade>figure:nth-child(2) {
     animation-delay: 15s;
     background-image: url("../images/Beers_and_Beer_Wooden_Barrel_Background.jpg");
-  }
-  
-  .crossfade > figure:nth-child(3) {
+}
+
+.crossfade>figure:nth-child(3) {
     animation-delay: 30s;
     background-image: url("../images/alcohol-alcoholism-ale-background-bar-beer-1447581-pxhere.com.jpg");
-  }
-  
-  .crossfade > figure:nth-child(4) {
+}
+
+.crossfade>figure:nth-child(4) {
     animation-delay: 45s;
     background-image: url("../images/alcohol-alcoholism-ale-background-bar-beer-1457325-pxhere.com.jpg");
-  }
-  
-  .crossfade > figure:nth-child(5) {
+}
+
+.crossfade>figure:nth-child(5) {
     animation-delay: 60s;
     background-image: url("../images/cold-liquid-bar-foam-celebration-beverage-495781-pxhere.com.jpg");
-  }
-  
-  @keyframes 
-  imageAnimation {  0% {
-   animation-timing-function: ease-in;
-   opacity: 0;
-  }
-   8% {
-   animation-timing-function: ease-out;
-   opacity: 1;
-  }
-   17% {
-   opacity: 1
-  }
-   25% {
-   opacity: 0
-  }
-   100% {
-   opacity: 0
-  }
-  }
-  /* END SLIDESHOW*/
+}
 
-  #nav-description {
+@keyframes imageAnimation {
+    0% {
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+
+    8% {
+        animation-timing-function: ease-out;
+        opacity: 1;
+    }
+
+    17% {
+        opacity: 1
+    }
+
+    25% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+/* END SLIDESHOW*/
+
+#nav-description {
     font-family: 'Sarabun', sans-serif;
-  }
-
-
-  
-  
+}

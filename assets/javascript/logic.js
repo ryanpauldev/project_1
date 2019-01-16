@@ -257,8 +257,8 @@ initApp = function () {
             url: calorieQuery,
             method: "GET",
             headers: {
-              "x-app-id": "e80e6372", // backup id: 7e095527 original: 87764d56
-              "x-app-key": "024d421a03345ac14de31cdb5abafe79" //fd9ce596a8a662b83bb86f924e19fd1e original: 64b0113675aca1dbf6f67d9df8299556
+              "x-app-id": "88c637ea", // backup id: 7e095527 original: 87764d56
+              "x-app-key": "2b84a03944fd42182d9ad570fa354ada" //fd9ce596a8a662b83bb86f924e19fd1e original: 64b0113675aca1dbf6f67d9df8299556
             }
           }).then(function (responseCalories) {
             console.log(responseCalories);
@@ -285,8 +285,8 @@ initApp = function () {
               url: nutritionQuery,
               method: "GET",
               headers: {
-                "x-app-id": "e80e6372",
-                "x-app-key": "024d421a03345ac14de31cdb5abafe79"
+                "x-app-id": "88c637ea",
+                "x-app-key": "2b84a03944fd42182d9ad570fa354ada"
               }
             }).then(function (responseNutrtion) {
               console.log("complete nutrition info here.");
